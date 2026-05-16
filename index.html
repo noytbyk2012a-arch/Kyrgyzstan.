@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "background": "#f8f9fa",
+                    "primary-container": "#006d77",
+                    "on-primary-container": "#9becf7",
+                    "secondary": "#885200",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "outline-variant": "#bec8ca",
+                    "on-secondary-container": "#653c00",
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#765d48",
+                    "on-surface": "#191c1d",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fe9d00",
+                    "secondary-fixed-dim": "#ffb868",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#59422f",
+                    "surface-tint": "#006972",
+                    "inverse-primary": "#82d3de",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#fedcc1",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001f23",
+                    "primary-fixed-dim": "#82d3de",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#ffddbb",
+                    "on-secondary-fixed": "#2b1700",
+                    "tertiary": "#5c4632",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary-container": "#fad8bd",
+                    "tertiary-fixed-dim": "#e1c1a7",
+                    "on-surface-variant": "#3e494a",
+                    "on-tertiary-fixed": "#291807",
+                    "outline": "#6f797a",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-fixed": "#9ff0fb",
+                    "on-secondary-fixed-variant": "#673d00",
+                    "surface-container-low": "#f3f4f5",
+                    "primary": "#00535b",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max-width": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-xl": ["72px", {"lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/30 backdrop-blur-xl border-b border-white/20 flex justify-between items-center px-6 md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-display-xl text-headline-md font-semibold tracking-tight text-primary">Discover</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-body-md text-label-sm text-primary" href="#">Home</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Explore</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Map</a>
+<a class="font-body-md text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Saved</a>
+</nav>
+<span class="material-symbols-outlined text-primary cursor-pointer">search</span>
+</div>
+</header>
+<main class="pb-24">
+<!-- Hero Section -->
+<section class="relative h-[795px] w-full flex items-center justify-center overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A breathtaking wide-angle shot of the snow-capped Ala-Archa mountains in Kyrgyzstan during the golden hour. The jagged peaks pierce a clear, soft blue sky, while the foreground shows a lush valley with a winding glacial river. The lighting is ethereal and warm, creating a premium travel-editorial feel. The overall aesthetic is clean, majestic, and serene, utilizing a palette of cool alpine whites and warm sunset golds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfHDu5Kh2Aayt3qqNg_5yronS_U-i6yS5JJ_DJ-MCn-tG8iPqQ40GMThDfnskBNNgFgZUegyAFdmabY1hdAXdiT1QliVUsTHsQLEJh0lmbFRShRiP-tWccytT_Om4X8AGl41gmhwxMKO5toV2TYUsvtdI4mdRQIU_hMjjqaCTAf8GEPAqgx4sl8EPDDRJFDxouy3g-eeFlAgM-hnxyOCH-pgj79o12q7twkigdc-fALDwQPM3fIhRwWEvsEC_RLzawNPfFFhW8bSat"/>
+<div class="absolute inset-0 bg-black/20"></div>
+<div class="relative z-10 text-center px-gutter max-w-4xl">
+<h2 class="font-display-xl text-white text-display-xl mb-4">Откройте душу гор</h2>
+<p class="font-body-lg text-white/90 text-body-lg mb-12 max-w-2xl mx-auto">Исследуйте величие Кыргызстана через призму нетронутой природы и древних традиций.</p>
+<!-- Floating Search Bar -->
+<div class="glass-card rounded-full p-2 max-w-xl mx-auto flex items-center shadow-2xl transition-all hover:scale-[1.02]">
+<div class="flex-1 flex items-center px-4">
+<span class="material-symbols-outlined text-white/80 mr-3">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 text-white placeholder-white/60 w-full font-body-md" placeholder="Где начнется ваше путешествие?" type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-full font-label-sm flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span>Найти</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+<span class="font-label-sm text-white/60 uppercase tracking-widest">Scroll</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+</div>
+</section>
+<!-- Popular Destinations -->
+<section class="py-20 md:py-32 px-6 md:px-margin-desktop bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<span class="text-primary-container font-label-sm uppercase tracking-widest block mb-3">Рекомендации</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Популярные направления</h3>
+</div>
+<button class="text-primary font-label-sm flex items-center gap-2 hover:gap-4 transition-all">
+                    Смотреть все <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+<div class="flex gap-8 overflow-x-auto hide-scrollbar pb-8 -mx-6 px-6 md:mx-0 md:px-0">
+<!-- Card 1: Son-Kul -->
+<div class="min-w-[320px] md:min-w-[420px] group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-6 shadow-xl">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A serene landscape of Son-Kul lake at dawn. A few traditional Kyrgyz yurts are scattered along the grassy shore under a vast, soft pastel sky reflecting in the crystal clear mountain water. The mood is tranquil and timeless, capturing the essence of nomadic life. High-fidelity photography with soft morning light and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl5haH3Lq5uF6QSgafSWlaIGLh0qVTpsWIhye9sJfrdrmAah7zkuw2X8a5sCo0IFy-4v7E7rTQzanmihzszrSHpUoh906R-K6MEjGHJktQSU0kduMXFdNGpIFVmztyI7Aa53yabIjPZsOExwMXYLv3hA5hMrELmic11FSi9RNhviSkGItcHqOwuagWVbdc4BcsDxRA3TfOg7ACM9-W7RUb1AoQQgdadmxyBF_w1hmUsem9M1ham23qvMUpiS-38Ca42kOlQZYWpZ53"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-label-sm uppercase tracking-widest mb-2 inline-block">Nomadic Heritage</span>
+<h4 class="text-white text-headline-md font-display-xl">Сон-Куль</h4>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Высокогорное озеро, окруженное бесконечными пастбищами и юртами кочевников.</p>
+</div>
+<!-- Card 2: Issyk-Kul -->
+<div class="min-w-[320px] md:min-w-[420px] group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-6 shadow-xl">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="The turquoise waters of Issyk-Kul lake stretching towards the distant Tian Shan mountains. Sunlight glints off the ripples in the water, creating a vibrant, crystalline effect. The beach is pristine with fine golden sand. The image is bright and airy with a sophisticated color palette of deep cyans and warm neutrals, embodying Kyrgyzstan's natural luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG8W_ERc_Z3cBQ0lS2DEcJjwNKJe3mn49qRAJhjHLx1-UyCscGCLpfjdEaF6L5gMqt9O4CIIqAeQ8yhva2NUIPckhh0ZHBBHXDgch0z5vrKzwjPXMP_B40sBDhgA8Wg0MBwy2p-IqXlESsrhm68Gm7Vjj9327usaryYVwMEtl2KJIdRKyNzezmp6AU0VNb_zPCxP8yxVkjx65bzvUOR7dFc7QmmDYyXvNTNkWr52iiX9KRzo8eMpCcICYVibXH9vS0G9VKm79WW9Bb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-label-sm uppercase tracking-widest mb-2 inline-block">The Pearl</span>
+<h4 class="text-white text-headline-md font-display-xl">Иссык-Куль</h4>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Драгоценная жемчужина Тянь-Шаня, незамерзающее озеро с кристальной водой.</p>
+</div>
+<!-- Card 3: Ala-Archa -->
+<div class="min-w-[320px] md:min-w-[420px] group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-6 shadow-xl">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Dramatic jagged mountain peaks of the Ala-Archa canyon. Pine forests cling to the rocky slopes under a moody, misty sky. The lighting is directional, highlighting the rugged textures of the stone and trees. A premium, adventurous aesthetic with deep greens and slate grays, evoking a sense of ancient, untouched wilderness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS_-eql9NOzZW5PL7I2FwhX_YzxSiLrSKpRy_335E1dqzqWfwAt2LNT0NxQ-X7SnLzdQZmS9al32gKyBOlDMbluswJGN2S4W9xkIVNh3sYml5LBsceIDXkkDWmSwf8U3XS5iLPRf8awPYbCwsnVq99ocLjogbQjxMJ_4YOwkWT4mJsDggAVNvw8zwTuheC1_lfSsSjbWmHp_oUr_DwJt4VDWU7rGfb7DM8Kb3fZbmxsHr0aX6h3iGzkRRO32i-8cr9GoYv9K-NCYKM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-label-sm uppercase tracking-widest mb-2 inline-block">Alpinism</span>
+<h4 class="text-white text-headline-md font-display-xl">Ала-Арча</h4>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md line-clamp-2">Величественный национальный парк с заснеженными пиками и бурными реками.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-6 md:px-margin-desktop">
+<div class="max-w-container-max-width mx-auto relative rounded-[2rem] overflow-hidden p-12 md:p-24 text-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="A stylized overhead view of a traditional Kyrgyz shyrdak carpet pattern integrated with mountain silhouettes. The colors are muted earthy tones of ochre, teal, and cream. The lighting is soft and ambient, creating a sophisticated heritage-focused background. This artistic composition bridges ancient culture with modern luxury travel vibes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBin1BGmHYCphPYEwun8VjLsAW2nghb-3s8PiA96UikU_45Vg1shV0aPjBTO_CkUSYnyNpuDoPSknsHN57yx0EiyG_upmPN3P03woft3dTKr9_Q_ustN0EcZDHHbzf5CRyfhIGxgEZ1eYOEa5hCBw7WlAKyPNWNWVWxpDnzcUSVnRhmR2pLA38EU9gfmqRYwHpNK3oKniBOkGnrB2_0XAskxO7Nku0hDF8lKI2UFByIZ8cxpn972qXTuZRTRG6cW_Y6f4GRU8_AWZja"/>
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="relative z-10">
+<h3 class="font-display-xl text-headline-lg text-primary mb-8">Готовы к приключению?</h3>
+<p class="font-body-lg text-on-surface-variant max-w-xl mx-auto mb-12">Ваш путь к вершинам начинается здесь. Получите персональный маршрут по самым потаенным уголкам Кыргызстана.</p>
+<button class="bg-primary-container text-on-primary-container px-12 py-5 rounded-full font-display-xl text-label-sm text-lg hover:scale-105 transition-transform duration-300 shadow-xl">
+                        Начни приключение
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container/60 backdrop-blur-2xl flex justify-around items-center px-4 py-3 pb-safe z-50 border-t border-white/20 shadow-2xl rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-full px-4 py-1 transition-all scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-body-md text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-body-md text-label-sm mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-body-md text-label-sm mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-body-md text-label-sm mt-1">Saved</span>
+</a>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-24 md:bottom-12 bg-secondary-container text-on-secondary-container w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>
+
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "background": "#f8f9fa",
+                    "primary-container": "#006d77",
+                    "on-primary-container": "#9becf7",
+                    "secondary": "#885200",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "outline-variant": "#bec8ca",
+                    "on-secondary-container": "#653c00",
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#765d48",
+                    "on-surface": "#191c1d",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fe9d00",
+                    "secondary-fixed-dim": "#ffb868",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#59422f",
+                    "surface-tint": "#006972",
+                    "inverse-primary": "#82d3de",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#fedcc1",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001f23",
+                    "primary-fixed-dim": "#82d3de",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#ffddbb",
+                    "on-secondary-fixed": "#2b1700",
+                    "tertiary": "#5c4632",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary-container": "#fad8bd",
+                    "tertiary-fixed-dim": "#e1c1a7",
+                    "on-surface-variant": "#3e494a",
+                    "on-tertiary-fixed": "#291807",
+                    "outline": "#6f797a",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-fixed": "#9ff0fb",
+                    "on-secondary-fixed-variant": "#673d00",
+                    "surface-container-low": "#f3f4f5",
+                    "primary": "#00535b",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max-width": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-xl": ["72px", {"lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/30 backdrop-blur-xl border-b border-white/20 flex justify-between items-center px-gutter md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-white/10 transition-colors rounded-full" data-icon="menu">menu</button>
+<h1 class="font-display-xl text-headline-md font-semibold tracking-tight text-primary">Discover</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-8 text-on-surface-variant font-label-sm uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">Explore</a>
+<a class="hover:text-primary transition-colors" href="#">Map</a>
+<a class="hover:text-primary transition-colors" href="#">Saved</a>
+</div>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-white/10 transition-colors rounded-full" data-icon="search">search</button>
+</div>
+</header>
+<main class="pt-24 pb-32 md:pb-12 max-w-container-max-width mx-auto px-gutter md:px-margin-desktop">
+<!-- Header Section -->
+<section class="mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Explore Kyrgyzstan</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Journey through the celestial mountains and nomadic heritage of the Silk Road.</p>
+</section>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-6 py-2 rounded-full bg-primary-container text-on-primary font-label-sm transition-all hover:scale-105">Все</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-sm hover:bg-white/60 transition-all hover:scale-105">Озера</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-sm hover:bg-white/60 transition-all hover:scale-105">Горы</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-sm hover:bg-white/60 transition-all hover:scale-105">Каньоны</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-sm hover:bg-white/60 transition-all hover:scale-105">Культура</button>
+</div>
+<!-- Location Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Kel-Suu -->
+<div class="group relative overflow-hidden rounded-xl glass-card transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Kel-Suu Lake" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A breathtaking view of Kel-Suu Lake in Kyrgyzstan, featuring sharp, jagged limestone cliffs reflecting in the emerald-green glacial waters. The lighting is soft and ethereal during the golden hour, highlighting the rugged textures of the Tien Shan mountains. The atmosphere is serene, pristine, and majestic, with a high-fidelity photographic quality that emphasizes the remote, alpine wilderness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwTCeRCcLV4LcJfOPUwyZef7e_9vmbiuaaLAg62eIW3O7H_WB2zcLmMsNP-ck4aNGlr6Zge1mHAVh7VeL7SEjyXlQNvrNGeAPoRrbPXro_51OIQ_c5rOeuSA845NEnrqNKrClcCLXhr_8kOAoqVnZ0nUv5c9LAm2svlCGVs0wKJTC0H2r1l0mSGPoDZc49gYay4pudHFL8xO8h6OinJB7G5S_njUCkY9kar1uqU8QVo7wihAgb52xhEGPiaaV5RQ1493xgKAVkGGqT"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest text-[10px] mb-1 block">Нарынская область</span>
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Кель-Суу</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="bookmark">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Высокогорное озеро, скрытое среди отвесных скал на высоте 3500 метров.</p>
+</div>
+</div>
+<!-- Card 2: Jeti-Oguz -->
+<div class="group relative overflow-hidden rounded-xl glass-card transition-transform duration-500 hover:-translate-y-2 lg:mt-12">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Jeti-Oguz" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="The Seven Bulls red rock formations at Jeti-Oguz, Kyrgyzstan, standing tall against a lush backdrop of evergreen forests. The vibrant iron-red sandstone glows under the midday sun, contrasted by a deep azure sky. The image is captured with professional landscape clarity, evoking a sense of ancient geology and nomadic legend, set within the lush Issyk-Kul region." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Wezl-XyE_yO7M5BPs_yNf5xDykhO-mY234_U3VxiTuuU5dtZ3PJgmTXRbwXjxZCr7jlmF9rV1exGh7tjchFtavmW9eeo8jH_Ni6mjYmqloqVIfk5CfT_FFehWZUr4x_e51fWN94rPMbporkBlkMGuhRjckhQTPo1tOOPK5KazWOCfYP9IB5c5OXqJz4BH795eqcy2y8CKRaFuD274A5fnXwmbjlm-9q2u0rlHwCq3CTOZf16hZMIBsWtaXHG7-hL-KqT7zxnj2JG"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest text-[10px] mb-1 block">Иссык-Кульская область</span>
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Джети-Огуз</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="bookmark">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Знаменитые алые скалы «Семь Быков», овеянные древними легендами номадов.</p>
+</div>
+</div>
+<!-- Card 3: Son-Kul -->
+<div class="group relative overflow-hidden rounded-xl glass-card transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Son-Kul Yurt Camp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A tranquil yurt camp on the shores of Lake Son-Kul at dawn. The high-altitude jailoo steppes are covered in morning dew, with the vast, calm lake stretching toward snow-capped peaks. Traditional Kyrgyz yurts with white felt covers sit harmoniously in the landscape. The lighting is cold and crisp, emphasizing the high-altitude solitude and the timeless nomadic way of life." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKS8yoCi5EI4ZPhD27WrWLp7wn_lvkbE1l20l-gSGGyNyixwgGh4nIpscmEfaU7oiS9-kMCHHFXs--ktZLAsKJ6ob9ZPGh2F5MUyG5IjH8dJ_Z39U6KI9Sh5lZHzeBPQKWTJ8qPmFdIQ0400SuNC8Bd6Ed4MIahg6E5CEZonn0f6y8G_jsu3erQAYmh0X5vjaKzg-rkoL3ohDZdQvplKN3r-DHezrEVWPMuZtm_3uXPqtXoYHCkrGC7gMBe0aDtV6wUEj9pKmJyIvD"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest text-[10px] mb-1 block">Нарынская область</span>
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Сон-Куль</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="bookmark">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Зеркало небес в окружении бескрайних эдильвейсовых пастбищ.</p>
+</div>
+</div>
+<!-- Card 4: Skazka Canyon -->
+<div class="group relative overflow-hidden rounded-xl glass-card transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Skazka Canyon" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="The surreal, multi-colored landscape of Skazka (Fairytale) Canyon near the southern shore of Lake Issyk-Kul. Intricate clay formations in shades of orange, yellow, and deep red create alien-like structures under a bright, high-contrast sun. The image showcases the unique desert-like microclimate of the region, emphasizing the dramatic and whimsical shapes formed by erosion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6QAqfYodn_MsY4x0bOv943xMTkrCMxi1VIAFdFQUBUg3Hy8yS-ZDlUtu0cREnCPKU2yLm6OJrbkIrCmUtgUnWZuUi1cocs0Fewnwy6ET_T0PzfuI36Hlcas6o6_scHcwTx-TTGgMoxyJfElmj04g8d1WJVzGNe_K0YEfzKqDnxrxjm8Ok0RsfD4nM8ICM65HeffLkXK5Odn5mvxxU68WCjfLkr-VVaCHp2LNXbLSga_rGxJj5-44kDrop3ldyMlb6mvieAUTwiw8b"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest text-[10px] mb-1 block">Иссык-Кульская область</span>
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Каньон Сказка</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="bookmark">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Лабиринты застывшей глины, меняющие облик при каждом дуновении ветра.</p>
+</div>
+</div>
+<!-- Card 5: Ala-Archa -->
+<div class="group relative overflow-hidden rounded-xl glass-card transition-transform duration-500 hover:-translate-y-2 lg:-mt-12">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Ala-Archa Mountains" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Epic snow-covered peaks of the Ala-Archa National Park, towering over a valley of juniper forests and a rushing glacial river. The scene is majestic and rugged, with dramatic shadows cast by the afternoon sun across the rocky ridges. The aesthetic is one of cold, crystalline mountain air and high-altitude adventure in the Kyrgyz Ala-Too range." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4j1KHt4sRjLZSxThaJcBcWaS_j7QZHUdEqjlQcWeAgKWMGAg42NUWKKyfFJ3e97wVGzqBc-sQYL4_jXhOMFaL7b6WTccG2ngIRo73UH46GdJBio-TuCeAh4xaNqn2Rjqd5_RKTyg2ndLQOxtHei--BEkoGsbEqRarv0Ica15nHrKEe7vJpN7oPiEs5QbjN30haMkq5LhnX7Akc-7PGUEWo2AEkkovrDmZtJuqIjse-c-GCMnWu0LJm0lVJp843159H-oICtRNEAqn"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest text-[10px] mb-1 block">Чуйская область</span>
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Ала-Арча</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="bookmark">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Альпийские пики и вечные ледники всего в часе езды от столицы.</p>
+</div>
+</div>
+<!-- Card 6: Arslanbob -->
+<div class="group relative overflow-hidden rounded-xl glass-card transition-transform duration-500 hover:-translate-y-2">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Arslanbob Walnut Forest" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="The ancient walnut forests of Arslanbob, Kyrgyzstan, with sunlight filtering through the dense canopy of massive, centuries-old trees. The forest floor is lush with wild greenery, and in the distance, a misty waterfall cascades down a mountain cliff. The mood is mystical and verdant, celebrating the world's largest natural walnut grove with soft, dappled light and deep forest tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOQDxL1a_o98cmlGVI5yz7a_rFyXbltydTokzXbPpl-wGSmjKuPm0mRJPPVFv94Y7eRCWBEf-Zqkoq89o9XBkkb4SJDdcePg-0ha3vzFFqLdcffogQJnRS5CTbmWHAPn5yIHoUK2HowtO_4JHN8fxQRCrfDcx7u7qKjD1jMbanKSTB3tU_9oAbSsgt_qj319JNFKM3JlzIGIvEnRt4a3hWnlC3XMODqaj5n0T37PPa6B9MBQ87wqZTCRGfGpjoAnSyrFHrm4OdthRY"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-sm text-primary uppercase tracking-widest text-[10px] mb-1 block">Джалал-Абадская область</span>
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Арсланбоб</h3>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="bookmark">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Крупнейшие в мире реликтовые ореховые леса, засаженные еще во времена Александра Македонского.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container/60 backdrop-blur-2xl border-t border-white/20 shadow-2xl flex justify-around items-center px-4 py-3 pb-safe z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-full px-4 py-1 scale-110 transition-transform duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-sm text-[10px]">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-sm text-[10px]">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-label-sm text-[10px]">Saved</span>
+</a>
+</nav>
+<!-- Floating Action Button (Optional Contextual) -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-12 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add_location_alt">add_location_alt</span>
+</button>
+</body></html>
+
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "background": "#f8f9fa",
+                    "primary-container": "#006d77",
+                    "on-primary-container": "#9becf7",
+                    "secondary": "#885200",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "outline-variant": "#bec8ca",
+                    "on-secondary-container": "#653c00",
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#765d48",
+                    "on-surface": "#191c1d",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fe9d00",
+                    "secondary-fixed-dim": "#ffb868",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#59422f",
+                    "surface-tint": "#006972",
+                    "inverse-primary": "#82d3de",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#fedcc1",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001f23",
+                    "primary-fixed-dim": "#82d3de",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#ffddbb",
+                    "on-secondary-fixed": "#2b1700",
+                    "tertiary": "#5c4632",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary-container": "#fad8bd",
+                    "tertiary-fixed-dim": "#e1c1a7",
+                    "on-surface-variant": "#3e494a",
+                    "on-tertiary-fixed": "#291807",
+                    "outline": "#6f797a",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-fixed": "#9ff0fb",
+                    "on-secondary-fixed-variant": "#673d00",
+                    "surface-container-low": "#f3f4f5",
+                    "primary": "#00535b",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max-width": "1280px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-xl": ["72px", {"lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .marker-pulse::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #006d77;
+            border-radius: 50%;
+            opacity: 0.4;
+            transform: scale(1.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface/30 backdrop-blur-xl border-b border-white/20 flex justify-between items-center px-gutter py-4">
+<button class="p-2 hover:bg-white/10 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-xl text-headline-md font-semibold tracking-tight text-primary">Discover</h1>
+<button class="p-2 hover:bg-white/10 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</button>
+</header>
+<!-- Main Canvas: Interactive Map Interface -->
+<main class="relative h-screen w-full overflow-hidden bg-[#e0e7e9]">
+<!-- Topographic Map Background -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-90" data-alt="A highly detailed topographic aerial view of the Kyrgyzstan mountain ranges, featuring the snow-capped peaks of the Tien Shan. The terrain is rendered in a clean, professional aesthetic with soft lighting and deep turquoise shadows in the valleys. The atmosphere is crisp and elite, showcasing the rugged natural heritage with a serene, modern-editorial color palette of snowy white and deep alpine lake blues." data-location="Kyrgyzstan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZteIjkKkVGvwxNUW4QIwdltJfhfwnV9fe_nY1sLvyIhFqaq4Kd3Ym7iNl-bB51TwHEnBrydj6jpEjZ4SbRRsZuGsganxdsB4Y-jaaxf2CcMXp1-p0eyaMJi3iTPFJrmwdM1myua6v5DYflGvEGTFbbrBPTpfPQL_JCf81FpT2lyq3VftGZ-Tjga2OcnhMo6V14o2aOTZOQnMIl0hJ-yPspQgFzlv88P2BOwEkply3OiDi0Im8W5mWvJiUtaRiaB7mZ7BwfiG2xQvB"/>
+</div>
+<!-- Custom Markers (Simulated Interactive Elements) -->
+<div class="absolute inset-0 z-10 pointer-events-none">
+<!-- Issyk-Kul Marker -->
+<div class="absolute top-[45%] left-[65%] pointer-events-auto cursor-pointer group">
+<div class="flex flex-col items-center">
+<div class="bg-primary text-on-primary p-2 rounded-full shadow-lg border-2 border-white marker-pulse relative">
+<span class="material-symbols-outlined text-sm" data-icon="pool">pool</span>
+</div>
+<span class="mt-2 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-primary shadow-sm border border-white/40">Issyk-Kul</span>
+</div>
+</div>
+<!-- Ala Archa Marker -->
+<div class="absolute top-[38%] left-[42%] pointer-events-auto cursor-pointer group">
+<div class="flex flex-col items-center">
+<div class="bg-primary-container text-on-primary p-2 rounded-full shadow-lg border-2 border-white relative">
+<span class="material-symbols-outlined text-sm" data-icon="landscape">landscape</span>
+</div>
+<span class="mt-2 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-primary shadow-sm border border-white/40">Ala Archa</span>
+</div>
+</div>
+<!-- Song-Kul Marker -->
+<div class="absolute top-[60%] left-[48%] pointer-events-auto cursor-pointer group">
+<div class="flex flex-col items-center">
+<div class="bg-primary text-on-primary p-2 rounded-full shadow-lg border-2 border-white relative">
+<span class="material-symbols-outlined text-sm" data-icon="water">water</span>
+</div>
+<span class="mt-2 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-primary shadow-sm border border-white/40">Song-Kul</span>
+</div>
+</div>
+</div>
+<!-- Floating Action Overlay (Top Left) -->
+<div class="absolute top-24 left-6 z-20 flex flex-col gap-4">
+<button class="w-12 h-12 bg-surface/60 backdrop-blur-xl rounded-xl border border-white/30 flex items-center justify-center shadow-lg hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="layers">layers</span>
+</button>
+<button class="w-12 h-12 bg-surface/60 backdrop-blur-xl rounded-xl border border-white/30 flex items-center justify-center shadow-lg hover:bg-white/40 transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="my_location">my_location</span>
+</button>
+</div>
+<!-- Bottom Preview Card (Glassmorphism) -->
+<div class="absolute bottom-28 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-30">
+<div class="bg-surface/60 backdrop-blur-2xl rounded-2xl p-4 border border-white/30 shadow-2xl flex gap-4 items-center">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A breathtaking sunset over the crystalline waters of Lake Issyk-Kul in Kyrgyzstan, framed by the majestic snow-capped peaks of the Tien Shan mountains in the distance. The lighting is warm and golden, reflecting on the calm lake surface, creating a peaceful and luxurious mountain resort atmosphere. The aesthetic is clean and high-fidelity, using deep turquoise and snowy white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArRELDBrQerELs0S8-qoCaUGkjrW0UHXQrbI7UqD4tBZbHFzlNiAqcuXWKTP7LyBvqNk1zpnpZn2qsgdZHVI8gocv2W-wsUBSBnJPaiYZOgESRvfGtHdkRg5n_TWHaI7ksFdaeHwZ4dOxh_-qSbR4tHF3IauOU2DAgXqYGqeRmAr5eWL1rs_O4rC-LdAU_0_ufsVvwrdBhWUOMKFrLWo56Wi8HIntZ8uU8ngyBAUv2eNv_nDH5s0_c6VnaOVFoXdcAl_VCAgIMpWSV"/>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div>
+<h3 class="font-headline-md text-body-lg font-bold text-primary">Issyk-Kul Lake</h3>
+<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">Heritage Destination</p>
+</div>
+<button class="w-full bg-primary-container text-white font-label-sm text-label-sm py-2 rounded-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="directions">directions</span>
+                        Проложить маршрут
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container/60 backdrop-blur-2xl border-t border-white/20 shadow-2xl rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-body-md text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-body-md text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-full px-4 py-1 scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-body-md text-label-sm">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-body-md text-label-sm">Saved</span>
+</a>
+</nav>
+</body></html>
